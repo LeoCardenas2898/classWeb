@@ -4,13 +4,14 @@
     Author     : Alumno
 --%>
 
+<%@page import="tienda.bean.Empleado"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="tienda.bean.Articulo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Co    ntent-Type" content="text/html; charset=UTF-8">
         <title>Artículos</title>
     </head>
     <body>
@@ -18,7 +19,12 @@
            ArrayList <Articulo> verArt =(ArrayList<Articulo>) request.getAttribute("verArt");
         %>
         <h1 align="center">Artículos</h1>
-        <table style="border-radius: 20px; border: 5px solid ; padding: 10px; border-style: groove; " align="center" >
+        <%
+            //Recoger variables de sesión que viene de validarUsuario:
+            Empleado emp = (Empleado)request.getSession().getAttribute("empleado");
+        %>  
+        <h3>Usuario: <%=emp.getNombre()+" "+emp.getPaterno()%> <a href="cerrarSesion">Cerrar sesión</a></h3>
+        <table style="border-radius: 20px; border: 10px solid ; padding: 10px; border-style: groove; " align="center" >
             <tr>
                 <th align="center">Nombre</th>
                 <td align="center">Descripción</td>

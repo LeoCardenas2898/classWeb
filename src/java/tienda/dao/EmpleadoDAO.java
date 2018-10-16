@@ -38,7 +38,7 @@ public class EmpleadoDAO extends Conexion  {
         return lista;
     }
 
-    public Empleado get(Empleado t) {
+    public Empleado get(int cod) {
         //comando sql para buscar empleado
         String sql = "SELECT * FROM EMPLEADO  WHERE IDEMPLEADO=?";
         Empleado emp = null;
@@ -48,7 +48,7 @@ public class EmpleadoDAO extends Conexion  {
             //creamos un objeto PreparedStatement con la conexion  a la base de datos
             stm = cn.prepareStatement(sql);
             //asignamos  valores a los parametros ?
-            stm.setInt(1, t.getIdempleado());
+            stm.setInt(1, cod);
             //ejecutar objeto PreparedStatement
             rs = stm.executeQuery();
             if (rs.next()) {

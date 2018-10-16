@@ -4,7 +4,7 @@
     Author     : Alumno
 --%>
 
-<%@page import="tienda.bean.Usuario"%>
+<%@page import="tienda.bean.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,9 +16,9 @@
         <h1 align="center">Welcome!</h1>
         <%
             //Recoger variables de sesión que viene de validarUsuario:
-            Usuario us = (Usuario)request.getSession().getAttribute("us");
+            Empleado emp = (Empleado)request.getSession().getAttribute("empleado");
         %>  
-        <h3>Usuario: <%=us.getUsuario()%> <a href="cerrarSesion">Cerrar sesión</a></h3>
+        <h3>Usuario: <%=emp.getNombre()+" "+emp.getPaterno()%> <a href="cerrarSesion">Cerrar sesión</a></h3>
         
         <ul>
             <li><a href="verArticulos">Ver artículos</a></li>

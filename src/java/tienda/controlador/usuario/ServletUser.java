@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import tienda.bean.Usuario;
+import tienda.dao.EmpleadoDAO;
 import tienda.dao.UsuarioDAO;
 
 /**
@@ -35,8 +36,9 @@ public class ServletUser extends HttpServlet {
             UsuarioDAO ud = new UsuarioDAO();
             Usuario  usuario =ud.validarUsuario(user, password);
             if(usuario!=null){
-               //Asignar valor a un atributo:
-                request.getSession().setAttribute("us", usuario);
+                EmpleadoDAO ed = new EmpleadoDAO();
+               //Asignar valor a un atributo variable de sesion 'empleado':
+                request.getSession().setAttribute("empleado", ed.get(usuario.getIdempleado()));
                //Ir a la ventana principal:
                 request.getRequestDispatcher("/WEB-INF/principal.jsp").forward(request, response);
             }else{
@@ -45,7 +47,7 @@ public class ServletUser extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }else if(path.equals("/cerrarSesion")){
-            request.getSession().removeAttribute("us");
+            request.getSession().removeAttribute("empleado");
             //Cerrar sesion:
             request.getSession().invalidate();
             request.getRequestDispatcher("login.jsp").forward(request, response);
