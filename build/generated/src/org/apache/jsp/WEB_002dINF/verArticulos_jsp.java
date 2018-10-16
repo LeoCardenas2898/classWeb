@@ -1,10 +1,12 @@
-package org.apache.jsp;
+package org.apache.jsp.WEB_002dINF;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.ArrayList;
+import tienda.bean.Articulo;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class verArticulos_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -42,42 +44,53 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Login</title>\n");
+      out.write("        <title>Artículos</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
 
-            //Obtener el valor de message de error de login:
-            String message = (String) request.getAttribute("message");
+           ArrayList <Articulo> verArt =(ArrayList<Articulo>) request.getAttribute("verArt");
         
       out.write("\n");
-      out.write("        <table style=\"border-radius: 20px; border: 2px solid ; padding: 10px; \" align=\"center\" >\n");
+      out.write("        <h1>Artículos</h1>\n");
+      out.write("        <table style=\"border-radius: 20px; border: 2px solid ; padding: 10px; \" align=\"center\">\n");
+      out.write("            <tr>\n");
+      out.write("                <th>Nombre: </th>\n");
+      out.write("                <td>Descripcion: </td>\n");
+      out.write("                <td>Precio: </td>\n");
+      out.write("                <td>Foto: </td>\n");
+      out.write("            </tr>\n");
       out.write("            ");
+for(Articulo x: verArt){
       out.write("\n");
-      out.write("            <form action=\"validarUsuario\" method=\"post\">\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>User</td>\n");
-      out.write("                    <td><input type=\"text\" name=\"txtUser\"></td> \n");
-      out.write("                </tr>\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>Password</td>\n");
-      out.write("                    <td><input type=\"text\" name=\"txtPass\"></td> \n");
-      out.write("                </tr>\n");
-      out.write("                <tr>\n");
-      out.write("                    <td></td>\n");
-      out.write("                    <td><input type=\"submit\" value=\"Sign in\"></td> \n");
-      out.write("                </tr>\n");
-      out.write("                <tr>\n");
-      out.write("                    <td colspan=\"2\" align=\"center\">");
-      out.print(message!=null ? message: "");
+      out.write("            <tr>\n");
+      out.write("                <th>");
+      out.print(x.getNombre());
+      out.write("</th>\n");
+      out.write("                <td style=\"width: 180px;\">");
+      out.print(x.getDescripcion());
       out.write("</td>\n");
-      out.write("                </tr>\n");
-      out.write("            </form>\n");
+      out.write("                <td>");
+      out.print(x.getPrecio());
+      out.write("</td>\n");
+      out.write("                <td>");
+      out.print(x.getFoto());
+      out.write("</td>\n");
+      out.write("            </tr>\n");
+      out.write("            ");
+}
+      out.write("\n");
+      out.write("            \n");
       out.write("        </table>\n");
+      out.write("            \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

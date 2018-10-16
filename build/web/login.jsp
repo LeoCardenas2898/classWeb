@@ -10,7 +10,7 @@
             //Obtener el valor de message de error de login:
             String message = (String) request.getAttribute("message");
         %>
-        <table style="border-radius: 20px; border: 2px solid ; padding: 10px; " align="center">
+        <table style="border-radius: 20px; border: 2px solid ; padding: 10px; " align="center" >
             <%--action tiene que ser igual al urlPatterns del Servlet--%>
             <form action="validarUsuario" method="post">
                 <tr>
