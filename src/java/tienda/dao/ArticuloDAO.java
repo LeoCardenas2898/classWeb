@@ -45,10 +45,10 @@ public class ArticuloDAO extends Conexion  {
 
     }
 
-    public Articulo get(Articulo t) {
+    public Articulo get(int cod) {
         Articulo ar = null;
         //instruccion sql para extraer todos los articulos de la BD
-        String sql = "select*from articulo where idarticulo=?";
+        String sql = "select * from articulo where idarticulo=?";
         //objeto preparastamet para ejecutar instrucion sql a traves de  su metodo
         //executequery y la conexion cn
         try {
@@ -56,7 +56,7 @@ public class ArticuloDAO extends Conexion  {
             cn = abrirConexion();
             //creamos un objeto PreparedStatement con la conexion  a la base de datos
             stm = cn.prepareStatement(sql);
-            stm.setInt(1, t.getIdarticulo());
+            stm.setInt(1, cod);
             //ejecutar  objeto preparedstament 
             rs = stm.executeQuery();
             //leer resulset
@@ -129,14 +129,14 @@ public class ArticuloDAO extends Conexion  {
 
     }
 
-    public void delete(Articulo t) {
+    public void delete(int cod) {
         String sql = "delete from  articulo where idarticulo=?";
         try {
             //abrir al conexion a  la base de datos tienda
             cn = abrirConexion();
             //creamos un objeto PreparedStatement con la conexion  a la base de datos
             stm = cn.prepareStatement(sql);
-            stm.setInt(1, t.getIdarticulo());
+            stm.setInt(1, cod);
             //ejecutar sentencia sql
             stm.executeUpdate();
         } catch (SQLException ex) {
